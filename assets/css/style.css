@@ -1,0 +1,278 @@
+/***** Définition des variables de couleurs *****/
+:root {
+    --white : #ffffff;
+    --light-gray : #f8f9fa;
+    --dark-gray: #4a4a4b;
+    --light-green: #a2c0be;
+    --dark-green :#567876;
+    --black : #000000;
+    --gray : #999999;
+    --orange : #ff9900;
+}
+
+@keyframes bascule {
+    0%   {
+        transform: rotate(-1deg);        
+    }
+    25%  {
+        transform: rotate(1deg);
+    }
+    50%  {
+        transform: rotate(-1deg);
+    }
+    75% {
+        transform: rotate(1deg);
+    }
+    100% {
+        transform: rotate(-1deg);
+    }
+  }
+
+/***** Définition de la police et retrait des marges du body *****/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/***** Définition des animations *****/
+#rond {
+    position: absolute;
+    left: 50%; /*position de la div qui représentera le rond de chargement : au centre de l'écran*/
+    top: 50%;
+    z-index: 1; /*on avance de 1 la div de l'animation sur l'axe Z */
+    width: 120px; /* dimensions de la div sous forme de carré, on va le transformer plus tard en rond */
+    height: 120px; /* Même huateur pour obtenir un carré...*/
+    margin: -76px 0 0 -76px; /*les marges ne sont pas parfaitement centré, alors on corrige les marges.*/
+    border-top: 6px  dotted; #17191a; /* Bordure suppérieure de la div carrée en noir, une fois arrondie, ce sera l'illusion *
+    d'un quart de cerle superposé sur un cercle invisible.
+
+    Explications : Comme je veux donner au cercle une forme de croissant, j'augmente la marge de la bordure noir suppérieur, 
+    ainsi, le border radius va arrondir la bordure et l'affiner aux extrémités pour coincider avec le reste du cercle invisible 
+    d'une tailled'un 1px:; 
+
+    Je fais exprès de choisir un style dotted pour que le quart de cerle soit en pointillés et que l'arrondissement les convertisse
+    en points ronds. */
+
+    border-radius: 50%; /* La div carrée en bordure invisible (sauf la bordure suppérieure) est transformée en rond */
+
+    animation: tour 1s alternate infinite; /*animation de rotation appelée "tour", l'animation dure 1 seconde,
+    on demande un style de mouvement en alternance (le mouvement de l'animation va dans un sens puis 
+    fait le chemin inverse), le mouvement de l'animation se répète à l'infini durant toute la durée de l'animation*/
+  }
+
+  
+  /* Animation du mouvement de rotation (de la div carré devenu demi cercle noir en poitillés) à 360° sur lui même */
+  @keyframes tour { 
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+  }
+  
+/*Définition de l'animation des images pour le hover */
+body {
+    margin:0;
+    font-size: 16px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+}
+
+#body { /*Le vrai site est invisible que le temps du chargement */
+    display:none;
+}
+
+/***** Définition d'un container général et des fond de couleurs *****/
+.container {
+    width: 65%;
+    margin: auto;
+}
+
+.background-gris {
+    background-color: var(--light-gray);
+}
+
+
+/***** Définition de la barre de navigation *****/
+nav div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Retrait de la décoration du logo*/
+nav div a {
+    display: flex;
+    text-decoration: none;
+    color : var(--black);
+    align-items: center;
+    font-size: 1.5em;
+}
+
+/* Le point orange du logo */
+.orange {
+    color : var(--orange);
+}
+
+/* Modification de la liste de liens */
+nav div ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav div li {
+    list-style: none;
+}
+
+nav div li a {
+    color : var(--gray);
+    font-size: 0.9em;
+    transition: color, 400ms;
+}
+
+nav div li a:hover {
+    color : var(--black);
+    font-size: 0.9em;
+    transition: color, 400ms;
+}
+
+/***** Définition de l'en-tête *****/
+
+/* Texte de l'en-tête */
+header .container {
+    display: flex;
+    padding-top : 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .container img {
+    height: unset;
+    width : 40%;
+    box-shadow: none;
+}
+
+/* Désactivation de l'animation pour l'image en header */
+header .container img:hover {
+    animation-name: unset;
+    animation-duration: unset;
+}
+
+/* Image de l'entête */
+img {
+    height: 20vmax;
+}
+
+img:hover {
+    box-shadow: 5px 5px var(--light-green);
+    animation-name: bascule; /* activation de l'animation pour les images des sections */
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+/***** Définition de l'aspect des sections ****/
+section {
+    padding-bottom: 40px;
+    display: flex;
+}
+section h3 {
+    font-size: 1.8em;
+}
+
+.section1 p {
+    width: 50%;
+    margin: auto;
+}
+
+/* Mise en forme du contenu textuel */
+p {
+    color : var(--gray);
+    margin-top: 5px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    margin : 0;
+    font-size: 2.8em;
+    font-weight: normal;
+}
+
+.contenu {
+    padding: 0px 70px;
+}
+
+.contenu h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+/* La première section ne comporte qu'une seule colonne et donc pas de display flex */
+.section1 {
+    display: block;
+    text-align: center;
+    padding-bottom : 100px;
+    padding-top : 50px;
+
+}
+
+/* Apparence du boutton */
+span .btn {
+    margin-top: 40px;
+}
+
+.btn {
+    background-color: var(--light-green);
+    padding: 3% 5% 3% 5%;
+    border-radius: 50px;
+    transition: background-color, 400ms;
+    font-weight: bold;
+}
+
+/* Apparence du boutton en survol */
+.btn:hover {
+    transition: background-color, 400ms;
+    background-color: var(--dark-green);
+}
+
+.btn a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.8em;
+}
+
+/* Apparence du footer */
+footer {
+    text-align: center;
+    background-color: var(--dark-gray);
+    padding: 3%;
+    justify-content: center;
+}
+
+footer p {
+    color: var(--white);
+    margin : 0;
+}
+
+
+/***** Les @media dans l'ordre d'écran du plus petit au plus grand *****/
+/*Style tablettes */
+@media (min-width:768px) { /* break point : 768px */
+    
+}
+/*Style ordinateur */
+@media (min-width:1200px) {
+    
+}
+
+/*Style très grand écran */
+@media (min-width:1400px) {
+    
+}
