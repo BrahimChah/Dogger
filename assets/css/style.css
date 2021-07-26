@@ -184,12 +184,15 @@ section {
     display: flex;
 }
 section h3 {
-    font-size: 1.8em;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: lighter;
 }
 
-.section1 p {
-    width: 50%;
+.welcome p {
+    width: 55%;
     margin: auto;
+    font-weight: lighter;
 }
 
 /* Mise en forme du contenu textuel */
@@ -197,12 +200,14 @@ p {
     color : var(--gray);
     margin-top: 5px;
     margin-bottom: 40px;
+    font-weight: lighter;
+
 }
 
 h1 {
     margin : 0;
     font-size: 2.8em;
-    font-weight: normal;
+    font-weight: lighter;
 }
 
 .contenu {
@@ -211,11 +216,11 @@ h1 {
 
 .contenu h3 {
     font-size: 1.5em;
-    font-weight: normal;
+    font-weight: lighter;
 }
 
 /* La première section ne comporte qu'une seule colonne et donc pas de display flex */
-.section1 {
+.welcome {
     display: block;
     text-align: center;
     padding-bottom : 100px;
